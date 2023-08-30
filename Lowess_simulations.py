@@ -1,3 +1,4 @@
+# update by Mahdi Moqri
 import pandas as pd               # Pandas handles dataframes
 import numpy as np
 import scipy
@@ -7,7 +8,7 @@ import seaborn as sns             # Seaborn for beautiful plots
 import statsmodels
 
 np.random.seed(10)
-x_values = np.random.randint(-50,110,size=(10000))
+x_values = np.random.randint(-50,110,size=(100))
 y_values = np.square(x_values)/1.5 + np.random.randint(-1000,1000, size=len(x_values))
 df = pd.DataFrame({"Xvalue" : x_values,
                     "Yvalue" : y_values
@@ -20,14 +21,14 @@ plt.title('(N = 100)')
 plt.show()
 
 # Create linear trend line
-sns.regplot("Xvalue", "Yvalue", data=df,  color="grey", scatter_kws={"s": 10},
+sns.regplot(x="Xvalue", y="Yvalue", data=df,  color="grey", scatter_kws={"s": 10},
              line_kws={"color":"r","alpha":1,"lw":1} ,fit_reg=True)
 plt.xlabel("X"), plt.ylabel("Y")
 plt.title('Test data - with linear trend line')
 plt.show()
 
 # Seaborne solution:
-sns.regplot("Xvalue", "Yvalue", data=df,  color="grey", scatter_kws={"s": 10},
+sns.regplot(x="Xvalue", y="Yvalue", data=df,  color="grey", scatter_kws={"s": 10},
              line_kws={"color":"r","alpha":1,"lw":1} ,lowess=True)
 plt.xlabel("X"), plt.ylabel("Y")
 plt.title('Test data - with seaborn lowess line (N = 10)')
